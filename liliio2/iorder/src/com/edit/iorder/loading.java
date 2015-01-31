@@ -43,7 +43,7 @@ public class loading extends ActionBarActivity {
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("stores");
 		// query.whereNear("geo", point);
-		query.setLimit(10);
+		query.setLimit(1000);
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> scoreList, ParseException e) {
 				// address,location,name,subtitle,tel,
@@ -55,18 +55,18 @@ public class loading extends ActionBarActivity {
 					for (int i = 0; i < scoreList.size(); i++) {
 						HashMap<String, String> hmapS = new HashMap<String, String>();
 						hmapS.put("address", scoreList
-								.get(scoreList.size() - 1).getString("address"));
+								.get(i).getString("address"));
 						hmapS.put(
 								"location",
-								scoreList.get(scoreList.size() - 1).getString(
+								scoreList.get(i).getString(
 										"location"));
-						hmapS.put("name", scoreList.get(scoreList.size() - 1)
+						hmapS.put("name", scoreList.get(i)
 								.getString("name"));
 						hmapS.put(
 								"subtitle",
-								scoreList.get(scoreList.size() - 1).getString(
+								scoreList.get(i).getString(
 										"subtitle"));
-						hmapS.put("tel", scoreList.get(scoreList.size() - 1)
+						hmapS.put("tel", scoreList.get(i)
 								.getString("tel"));
 						load lo = new load();
 						lo.DatabaseStringList.add(hmapS);
