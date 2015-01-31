@@ -23,7 +23,10 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dip"
+                    android:paddingRight="10dip"
+                    android:paddingTop="10dip" >
 
                     <TextView
                         android:id="@+id/Store_name"
@@ -78,7 +81,30 @@
                         android:layout_below="@+id/goodBotton"
                         android:layout_toLeftOf="@+id/Address"
                         android:layout_toRightOf="@+id/NavigationBotton"
-                        android:text="" />
+                        android:text="dd" />
+
+                    <TextView
+                        android:id="@+id/tel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Address"
+                        android:text="尚無電話號碼" />
+
+                    <TextView
+                        android:id="@+id/getShow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/tel"
+                        android:text="訂購" />
+
+                    <TextView
+                        android:id="@+id/gettogeter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/tel"
+                        android:text="糾團" />
                 </RelativeLayout>
 
                 <RelativeLayout

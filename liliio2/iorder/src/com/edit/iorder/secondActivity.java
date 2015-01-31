@@ -31,7 +31,7 @@ public class secondActivity extends FragmentActivity implements
 		setContentView(R.layout.second);
 		ActionBar actionBar = getActionBar();
 		actionBar.setBackgroundDrawable(new ColorDrawable(Color
-				.parseColor("#0000ff")));
+				.parseColor("#4185F4")));
 		// actionBar.setHomeButtonEnabled(true);
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		String title = getIntent().getStringExtra("title");
@@ -45,6 +45,7 @@ public class secondActivity extends FragmentActivity implements
 		TextView Address2 = (TextView) findViewById(R.id.Address2);
 		Store_name2.setText(title);
 		Address2.setText(sub);
+		
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 		LinearLayout lLinearLayout1 = (LinearLayout) findViewById(R.id.page);

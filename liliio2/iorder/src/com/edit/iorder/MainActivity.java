@@ -46,7 +46,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setBackgroundDrawable(new ColorDrawable(Color
-				.parseColor("#0000ff")));
+				.parseColor("#4185F4")));
 
 		setContentView(R.layout.activity_main);
 
@@ -82,10 +82,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
 					22.6297370, 120.3278820), 9));
 
 		}
-		
-		
 
-		
 		// HashMap<String, Double> hmap = new HashMap<String, Double>();
 		// hmap.put("X_num", 22.6297370);
 		// hmap.put("Y_num", 120.3278820);
@@ -121,148 +118,145 @@ public class MainActivity extends FragmentActivity implements LocationListener,
 							new LatLng(lo.DatabaseDoubleList.get(i)
 									.get("X_num"), lo.DatabaseDoubleList.get(i)
 									.get("Y_num")))
-									
 
 					.title(lo.DatabaseStringList.get(i).get("name"))
 					.snippet(lo.DatabaseStringList.get(i).get("address"))
 					.icon(BitmapDescriptorFactory.fromBitmap(b)));
 			mMap.setInfoWindowAdapter(new InfoWindowAdapter() {
-				
+
 				// Use default InfoWindow frame
 				@Override
-				public View getInfoWindow(Marker arg0) {				
+				public View getInfoWindow(Marker arg0) {
 					return null;
-				}			
-				
+				}
+
 				// Defines the contents of the InfoWindow
 				@Override
 				public View getInfoContents(Marker arg0) {
-					
+
 					// Getting view from the layout file info_window_layout
-					View v = getLayoutInflater().inflate(R.layout.info_window_layout, null);
-					
+					View v = getLayoutInflater().inflate(
+							R.layout.info_window_layout, null);
+
 					// Getting the position from the marker
-//					LatLng latLng = arg0.getPosition();
-//					
-//					// Getting reference to the TextView to set latitude
-//					TextView tvLat = (TextView) v.findViewById(R.id.tv_lat);
-//					
-//					// Getting reference to the TextView to set longitude
-//					TextView tvLng = (TextView) v.findViewById(R.id.tv_lng);
-//					
-//					// Setting the latitude
-//					tvLat.setText("Latitude:" + latLng.latitude);
-//					
-//					// Setting the longitude
-//					tvLng.setText("Longitude:"+ latLng.longitude);
-					
-					
-					
-					String title=arg0.getTitle();
+					// LatLng latLng = arg0.getPosition();
+					//
+					// // Getting reference to the TextView to set latitude
+					// TextView tvLat = (TextView) v.findViewById(R.id.tv_lat);
+					//
+					// // Getting reference to the TextView to set longitude
+					// TextView tvLng = (TextView) v.findViewById(R.id.tv_lng);
+					//
+					// // Setting the latitude
+					// tvLat.setText("Latitude:" + latLng.latitude);
+					//
+					// // Setting the longitude
+					// tvLng.setText("Longitude:"+ latLng.longitude);
+
+					String title = arg0.getTitle();
 					TextView tvLat = (TextView) v.findViewById(R.id.tv_lat);
-					String snippet=arg0.getSnippet();
+					String snippet = arg0.getSnippet();
 					TextView tvLng = (TextView) v.findViewById(R.id.tv_lng);
 
 					tvLat.setText(title);
 					tvLng.setText(snippet);
 					// Returning the view containing InfoWindow contents
 					return v;
-					
+
 				}
-				
+
 			});
 		}
-			// mMap.s
+		// mMap.s
 
-//			mMap.setInfoWindowAdapter(new CustomizeInfoWindowAdapter(
-//					getLayoutInflater()));//
-//			// lo.DatabaseStringList.get(i).get("name").toString()
-			mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
-				@Override
-				public void onInfoWindowClick(Marker marker) {
-					Intent intent1 = new Intent(MainActivity.this,
-							secondActivity.class);
-					intent1.putExtra("title", marker.getTitle());
-					intent1.putExtra("sub", marker.getSnippet());
-					LatLng latLng = marker.getPosition();
-					intent1.putExtra("Latitude", latLng.latitude);
-					intent1.putExtra("Longitude", latLng.longitude);
-					// intent1.putExtra("pictureListNum", marker.getSnippet());
+		// mMap.setInfoWindowAdapter(new CustomizeInfoWindowAdapter(
+		// getLayoutInflater()));//
+		// // lo.DatabaseStringList.get(i).get("name").toString()
+		mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+			@Override
+			public void onInfoWindowClick(Marker marker) {
+				Intent intent1 = new Intent(MainActivity.this,
+						secondActivity.class);
+				intent1.putExtra("title", marker.getTitle());
+				intent1.putExtra("sub", marker.getSnippet());
+				LatLng latLng = marker.getPosition();
+				intent1.putExtra("Latitude", latLng.latitude);
+				intent1.putExtra("Longitude", latLng.longitude);
+				// intent1.putExtra("pictureListNum", marker.getSnippet());
 
-					startActivity(intent1);
-				}
-			});
-//			mMap.setOnMapClickListener(new OnMapClickListener() {
-//				
-//				@Override
-//				public void onMapClick(LatLng arg0) {
-//					// Clears any existing markers from the GoogleMap
-//					mMap.clear();
-//					
-//					// Creating an instance of MarkerOptions to set position
-//					MarkerOptions markerOptions = new MarkerOptions();
-//					
-//					// Setting position on the MarkerOptions
-//					markerOptions.position(arg0);				
-//					
-//					// Animating to the currently touched position
-//					mMap.animateCamera(CameraUpdateFactory.newLatLng(arg0));	
-//					
-//					// Adding marker on the GoogleMap
-//					Marker marker = mMap.addMarker(markerOptions);
-//					
-//					// Showing InfoWindow on the GoogleMap
-//					marker.showInfoWindow();
-//					
-//				}
-//			});
-			
-		
+				startActivity(intent1);
+			}
+		});
+		// mMap.setOnMapClickListener(new OnMapClickListener() {
+		//
+		// @Override
+		// public void onMapClick(LatLng arg0) {
+		// // Clears any existing markers from the GoogleMap
+		// mMap.clear();
+		//
+		// // Creating an instance of MarkerOptions to set position
+		// MarkerOptions markerOptions = new MarkerOptions();
+		//
+		// // Setting position on the MarkerOptions
+		// markerOptions.position(arg0);
+		//
+		// // Animating to the currently touched position
+		// mMap.animateCamera(CameraUpdateFactory.newLatLng(arg0));
+		//
+		// // Adding marker on the GoogleMap
+		// Marker marker = mMap.addMarker(markerOptions);
+		//
+		// // Showing InfoWindow on the GoogleMap
+		// marker.showInfoWindow();
+		//
+		// }
+		// });
+
 		locationManager.requestLocationUpdates(provider, 20000, 0, this);
 	}
 
-//	class CustomizeInfoWindowAdapter implements InfoWindowAdapter {
-//		LayoutInflater inflater = null;
-//
-//		CustomizeInfoWindowAdapter(LayoutInflater inflater) {
-//			this.inflater = inflater;
-//		}
-//
-//		// 未點選前
-//		public View getInfoWindow(Marker marker) {
-//			// 可以沒有 InfoWindow
-//			 View popWindow = inflater.inflate(
-//			 R.layout.customize_infowindow_layout, null);
-//			 TextView textName = (TextView) popWindow
-//			 .findViewById(R.id.textName);
-//			
-//			 textName.setText(marker.getTitle());
-//			 RelativeLayout mainlayout = (RelativeLayout) popWindow
-//			 .findViewById(R.id.main_layout);
-//			 mainlayout.setBackgroundColor(Color.RED);
-//			return (null);
-//		}
-//
-//		// 點選後
-//		public View getInfoContents(Marker marker) {
-//			// 自訂 InfoWindow layout
-////			View popWindow = inflater.inflate(
-////					R.layout.customize_infowindow_layout, null);
-////			TextView textName = (TextView) popWindow
-////					.findViewById(R.id.textName);
-////
-////			textName.setText(marker.getTitle());
-////			RelativeLayout mainlayout = (RelativeLayout) popWindow
-////					.findViewById(R.id.main_layout);
-////			mainlayout.setBackgroundColor(Color.RED);
-////			// bababa...
-////
-////			textName.setText(marker.getTitle());
-//			// load lo = new load();
-//			// lo.DatabaseStringList.get(1).get("address");
-//			return (null);
-//		}
-//	}
+	// class CustomizeInfoWindowAdapter implements InfoWindowAdapter {
+	// LayoutInflater inflater = null;
+	//
+	// CustomizeInfoWindowAdapter(LayoutInflater inflater) {
+	// this.inflater = inflater;
+	// }
+	//
+	// // 未點選前
+	// public View getInfoWindow(Marker marker) {
+	// // 可以沒有 InfoWindow
+	// View popWindow = inflater.inflate(
+	// R.layout.customize_infowindow_layout, null);
+	// TextView textName = (TextView) popWindow
+	// .findViewById(R.id.textName);
+	//
+	// textName.setText(marker.getTitle());
+	// RelativeLayout mainlayout = (RelativeLayout) popWindow
+	// .findViewById(R.id.main_layout);
+	// mainlayout.setBackgroundColor(Color.RED);
+	// return (null);
+	// }
+	//
+	// // 點選後
+	// public View getInfoContents(Marker marker) {
+	// // 自訂 InfoWindow layout
+	// // View popWindow = inflater.inflate(
+	// // R.layout.customize_infowindow_layout, null);
+	// // TextView textName = (TextView) popWindow
+	// // .findViewById(R.id.textName);
+	// //
+	// // textName.setText(marker.getTitle());
+	// // RelativeLayout mainlayout = (RelativeLayout) popWindow
+	// // .findViewById(R.id.main_layout);
+	// // mainlayout.setBackgroundColor(Color.RED);
+	// // // bababa...
+	// //
+	// // textName.setText(marker.getTitle());
+	// // load lo = new load();
+	// // lo.DatabaseStringList.get(1).get("address");
+	// return (null);
+	// }
+	// }
 
 	@Override
 	protected void onResume() {
