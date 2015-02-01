@@ -24,6 +24,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/google_card"
                     android:paddingLeft="10dip"
                     android:paddingRight="10dip"
                     android:paddingTop="10dip" >
@@ -33,21 +34,32 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="5dip"
+                        android:paddingRight="10dip"
+                        android:paddingTop="5dip"
                         android:text="店家名稱:" />
 
-                    <ImageButton
+                    <Button
                         android:id="@+id/badBotton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:src="@android:drawable/btn_star" />
+                        android:background="#00000000"
+                        android:paddingBottom="5dip"
+                        android:paddingTop="5dip"
+                        android:text="    贛"
+                        android:textColor="#4185F4" />
 
-                    <ImageButton
+                    <Button
                         android:id="@+id/goodBotton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toLeftOf="@+id/badBotton"
-                        android:src="@android:drawable/btn_star" />
+                        android:background="#00000000"
+                        android:paddingBottom="5dip"
+                        android:paddingTop="5dip"
+                        android:text="讚"
+                        android:textColor="#4185F4" />
 
                     <TextView
                         android:id="@+id/Store_name2"
@@ -56,7 +68,10 @@
                         android:layout_toLeftOf="@+id/goodBotton"
                         android:layout_toRightOf="@+id/Store_name"
                         android:gravity="center"
-                        android:text="" />
+                        android:paddingBottom="5dip"
+                        android:paddingTop="5dip"
+                        android:text=""
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/Address"
@@ -64,7 +79,11 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/goodBotton"
                         android:gravity="center"
-                        android:text="地址：" />
+                        android:paddingBottom="5dip"
+                        android:paddingRight="10dip"
+                        android:paddingTop="5dip"
+                        android:text="地址："
+                        android:textSize="12sp" />
 
                     <ImageButton
                         android:id="@+id/NavigationBotton"
@@ -72,7 +91,11 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_below="@+id/goodBotton"
-                        android:src="@android:drawable/btn_star" />
+                        android:background="#00000000"
+                        android:paddingBottom="5dip"
+                        android:paddingTop="5dip"
+                        android:src="@drawable/my_location"
+                        android:visibility="invisible" />
 
                     <TextView
                         android:id="@+id/Address2"
@@ -81,30 +104,44 @@
                         android:layout_below="@+id/goodBotton"
                         android:layout_toLeftOf="@+id/Address"
                         android:layout_toRightOf="@+id/NavigationBotton"
+                        android:paddingBottom="5dip"
+                        android:paddingTop="5dip"
                         android:text="dd" />
 
                     <TextView
                         android:id="@+id/tel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/Address"
-                        android:text="尚無電話號碼" />
+                        android:layout_below="@+id/NavigationBotton"
+                        android:layout_centerHorizontal="true"
+                        android:paddingBottom="5dip"
+                        android:paddingTop="5dip"
+                        android:text="尚無電話號碼"
+                        android:textSize="12sp" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/getShow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_below="@+id/tel"
-                        android:text="訂購" />
+                        android:background="#00000000"
+                        android:paddingBottom="5dip"
+                        android:paddingTop="5dip"
+                        android:text="訂購"
+                        android:textColor="#4185F4" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/gettogeter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_below="@+id/tel"
-                        android:text="糾團" />
+                        android:background="#00000000"
+                        android:paddingBottom="5dip"
+                        android:paddingTop="5dip"
+                        android:text="糾團"
+                        android:textColor="#4185F4" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -121,5 +158,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/page" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/page"
+        android:layout_alignParentLeft="true"
+        android:background="#00000000"
+        android:src="@drawable/oval_45" />
 
 </RelativeLayout>

@@ -107,7 +107,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
 		// // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 		// 22.6297370, 120.3278820), 16));
 		markerClass amarkerClass = new markerClass();
-		Bitmap b = amarkerClass.Doublecircle(40, 35);
+		Bitmap b = amarkerClass.Doublecircle(20, 15);
 		//
 		load lo = new load();
 		for (int i = 0; i < lo.DatabaseDoubleList.size(); i++) {
