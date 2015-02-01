@@ -110,10 +110,10 @@ public class GalleryImageSwitcherDemoActivity extends Activity {
 
 		Parse.initialize(this, "yOYn9klTPIEKfgLPFglxbHUc9K7GpuUVm6Xr334m",
 				"b6TTWVdcMresQPU6agGbNzotJEu5vPeEm4A2fNBB");
-
+		System.gc();
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("stores");
 		// query.whereNear("geo", point);
-		query.setLimit(1000);
+		query.setLimit(10);
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> scoreList, ParseException e) {
 				// address,location,name,subtitle,tel,
@@ -169,16 +169,16 @@ public class GalleryImageSwitcherDemoActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				ParseAnonymousUtils.logIn(new LogInCallback() {
-					@Override
-					public void done(ParseUser user, ParseException e) {
-						if (e != null) {
-							Log.d("MyApp", "Anonymous login failed.");
-						} else {
-							Log.d("MyApp", "Anonymous user logged in.");
-						}
-					}
-				});
+//				ParseAnonymousUtils.logIn(new LogInCallback() {
+//					@Override
+//					public void done(ParseUser user, ParseException e) {
+//						if (e != null) {
+//							Log.d("MyApp", "Anonymous login failed.");
+//						} else {
+//							Log.d("MyApp", "Anonymous user logged in.");
+//						}
+//					}
+//				});
 
 				// login();
 

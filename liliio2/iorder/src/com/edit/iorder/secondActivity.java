@@ -24,17 +24,20 @@ import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
 import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.StreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
-//import com.parse.CountCallback;
-//import com.parse.FindCallback;
-//import com.parse.ParseException;
-//import com.parse.ParseObject;
-//import com.parse.ParseQuery;
+import com.parse.CountCallback;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 public class secondActivity extends FragmentActivity implements
 		OnStreetViewPanoramaReadyCallback {
 	double DLatitude = -33.87365;
 	double DLongitude = 151.20689;
-	 String add,tel;
+	String title;
+	int HaveClick = 0;
+
+	// String add,tel;
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@SuppressLint("NewApi")
 	@Override
@@ -46,7 +49,7 @@ public class secondActivity extends FragmentActivity implements
 				.parseColor("#4185F4")));
 		// actionBar.setHomeButtonEnabled(true);
 		actionBar.setDisplayHomeAsUpEnabled(true);
-		String title = getIntent().getStringExtra("title");
+		title = getIntent().getStringExtra("title");
 		String sub = getIntent().getStringExtra("sub");
 		DLatitude = getIntent().getExtras().getDouble("Latitude");
 		DLongitude = getIntent().getExtras().getDouble("Longitude");
@@ -65,58 +68,100 @@ public class secondActivity extends FragmentActivity implements
 				.findFragmentById(R.id.streetviewpanorama);
 
 		streetViewPanoramaFragment.getStreetViewPanoramaAsync(this);
+		// Parse.initialize(this, "yOYn9klTPIEKfgLPFglxbHUc9K7GpuUVm6Xr334m",
+		// "b6TTWVdcMresQPU6agGbNzotJEu5vPeEm4A2fNBB");
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("vote");
+		query.whereEqualTo("name", title);
+		query.countInBackground(new CountCallback() {
+			public void done(int count, ParseException e) {
+				if (e == null) {
+					// The count request succeeded. Log the count
+					Log.d("score", "Sean has played " + count + " games");
 
-//		ParseQuery<ParseObject> query = ParseQuery.getQuery("stores");
-//		query.whereEqualTo("name", title);
-//		query.countInBackground(new CountCallback() {
-//			public void done(int count, ParseException e) {
-//				if (e == null) {
-//					// The count request succeeded. Log the count
-//					Log.d("score", "Sean has played " + count + " games");
-//
-//				} else {
-//					// The request failed
-//				}
-//			}
-//		});
-//		ParseQuery<ParseObject> query2 = ParseQuery.getQuery("stores");
-//		query2.whereEqualTo("name", title);
-//		query2.findInBackground(new FindCallback<ParseObject>() {
-//			public void done(List<ParseObject> scoreList, ParseException e) {
-//				// address,location,name,subtitle,tel,
-//				if (e == null) {
-//					for (int i = 0; i < scoreList.size(); i++) {
-////						HashMap<String, String> hmapS = new HashMap<String, String>();
-//						 add=scoreList.get(i).getString("address");
-//						 tel=scoreList.get(i).getString("tel");
-//							
-//							TextView Address2 = (TextView) findViewById(R.id.Address2);
-//							Address2.setText(add);
-//							TextView tel2 = (TextView) findViewById(R.id.tel);
-//							tel2.setText(tel);
-//					}
-//
-//				} else {
-//				}
-//			
-//
-//			}
-//		});
+				} else {
+					// The request failed
+				}
+				TextView getNumer = (TextView) findViewById(R.id.getNumer);
+				getNumer.setText(String.valueOf(count));
+				
+				load lo = new load();
+				for (int i = 0; i < lo.DataLike.size(); i++) {
+					if (lo.DataLike.get(i).get("nume").equals(title)) {
+						if (lo.DataLike2.get(i).get("num") == 1) {
+							HaveClick = 1;
+							 getNumer = (TextView) findViewById(R.id.getNumer);
+//							int count = Integer.valueOf(getNumer.getText().toString())
+//									.intValue();
+							getNumer.setText(String.valueOf(count+1));
+						}
+					}
 
+				}
+				
+			}
+		});
+
+		ParseQuery<ParseObject> query2 = ParseQuery.getQuery("stores");
+		query2.whereEqualTo("name", title);
+		query2.findInBackground(new FindCallback<ParseObject>() {
+			public void done(List<ParseObject> scoreList, ParseException e) {
+				// address,location,name,subtitle,tel,
+				if (e == null) {
+					for (int i = 0; i < scoreList.size(); i++) {
+						// HashMap<String, String> hmapS = new HashMap<String,
+						// String>();
+						String add = scoreList.get(0).getString("address");
+						String tel = scoreList.get(0).getString("tel");
+
+						TextView Address2 = (TextView) findViewById(R.id.Address2);
+						Address2.setText(add);
+						if (tel.equals("")) {
+
+						} else {
+
+							TextView tel2 = (TextView) findViewById(R.id.tel);
+							tel2.setText(tel);
+						}
+					}
+
+				} else {
+
+				}
+
+			}
+		});
+	
 		Button goodBotton = (Button) findViewById(R.id.goodBotton);
 		goodBotton.setOnClickListener(new Button.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-//				ParseQuery<ParseObject> query = ParseQuery.getQuery("vote");
-//				// query.whereNear("geo", point);
-//				query.setLimit(1000);
-//				query.findInBackground(new FindCallback<ParseObject>() {
-//					public void done(List<ParseObject> scoreList,
-//							ParseException e) {
-//
-//					}
-//				});
+				// ParseQuery<ParseObject> query = ParseQuery.getQuery("vote");
+				// // query.whereNear("geo", point);
+				// query.setLimit(1000);
+				// query.findInBackground(new FindCallback<ParseObject>() {
+				// public void done(List<ParseObject> scoreList,
+				// ParseException e) {
+				//
+				// }
+				// });
+
+				load lo = new load();
+				if (HaveClick == 0) {
+					HaveClick = 1;
+					HashMap<String, String> hmapS = new HashMap<String, String>();
+					hmapS.put("nume", title);
+					lo.DataLike.add(hmapS);
+
+					HashMap<String, Integer> hmapS2 = new HashMap<String, Integer>();
+					hmapS2.put("num", 1);
+					lo.DataLike2.add(hmapS2);
+
+					TextView getNumer = (TextView) findViewById(R.id.getNumer);
+					int count = Integer.valueOf(getNumer.getText().toString())
+							.intValue();
+					getNumer.setText(String.valueOf(count + 1));
+				}
 
 			}
 
@@ -126,6 +171,40 @@ public class secondActivity extends FragmentActivity implements
 
 			@Override
 			public void onClick(View v) {
+
+				// if (HaveClick == 1) {
+				// HashMap<String, String> hmapS = new HashMap<String,
+				// String>();
+				// hmapS.put("nume", title);
+				// lo.DataLike.add(hmapS);
+				//
+				// HashMap<String, Integer> hmapS2 = new HashMap<String,
+				// Integer>();
+				// hmapS2.put("num", 1);
+				// lo.DataLike2.add(hmapS2);
+				// }
+				if (HaveClick == 1) {
+					HaveClick = 0;
+					load lo = new load();
+					for (int i = 0; i < lo.DataLike.size(); i++) {
+						if (lo.DataLike.get(i).get("nume").equals(title)) {
+
+							lo.DataLike2.get(i).put("num", 0);
+							// HaveClick = 1;
+
+						}
+
+					}
+				} else {
+					TextView getNumer = (TextView) findViewById(R.id.getNumer);
+					int count = Integer.valueOf(getNumer.getText().toString())
+							.intValue();
+					if (count <= 0) {
+
+					} else {
+						getNumer.setText(String.valueOf(count - 1));
+					}
+				}
 
 			}
 
