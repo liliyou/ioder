@@ -113,7 +113,7 @@ public class GalleryImageSwitcherDemoActivity extends Activity {
 		System.gc();
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("stores");
 		// query.whereNear("geo", point);
-		query.setLimit(10);
+		query.setLimit(600);
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> scoreList, ParseException e) {
 				// address,location,name,subtitle,tel,
